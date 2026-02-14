@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Be My Valentine ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: radial-gradient(circle at top, #ff9a9e, #fad0c4);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+            max-width: 420px;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.15rem;
+            margin-bottom: 25px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        button {
+            border: none;
+            padding: 12px 28px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .yes {
+            background: #ff4d6d;
+            color: white;
+        }
+
+        .yes:hover {
+            transform: scale(1.1);
+        }
+
+        .no {
+            background: white;
+            color: #ff4d6d;
+            position: relative;
+        }
+
+        .result {
+            font-size: 1.3rem;
+            margin-top: 20px;
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            font-size: 20px;
+            animation: float 6s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(-110vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h1>Hey Kishore(Thangapataniii)❤️</h1>
+        
+        <p>
+            Life is sweeter with you in it.<br>
+            So I have just one important question…
+        </p>
+
+        <h2>Will you be my Valentine? 🌹</h2>
+
+        <div class="buttons">
+            <button class="yes" onclick="sayYes()">Yes 💖</button>
+            <button class="no" onmouseover="moveNo()">No 🙈</button>
+        </div>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function sayYes() {
+            document.getElementById("result").innerHTML =
+                "YAYYY!!! 🥰💘<br>You just made my heart very, very happy ❤️";
+        }
+
+        function moveNo() {
+            const btn = document.querySelector(".no");
+            const x = Math.random() * 200 - 100;
+            const y = Math.random() * 200 - 100;
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        // Hearts animation
+        setInterval(() => {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerText = "💖";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = Math.random() * 20 + 15 + "px";
+            heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 7000);
+        }, 300);
+    </script>
+
+</body>
+
+</html>
