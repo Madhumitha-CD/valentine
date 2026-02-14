@@ -7,9 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            height: 100vh;
+            min-height: 100vh;
             overflow: hidden;
             background: radial-gradient(circle at top, #ff9a9e, #fad0c4);
             font-family: 'Segoe UI', sans-serif;
@@ -17,42 +21,53 @@
             align-items: center;
             justify-content: center;
             color: #fff;
+            padding: 16px;
         }
 
         .card {
             background: rgba(255, 255, 255, 0.2);
-            padding: 40px;
-            border-radius: 25px;
+            padding: 28px 22px;
+            border-radius: 22px;
             text-align: center;
             backdrop-filter: blur(12px);
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
-            max-width: 420px;
+            width: 100%;
+            max-width: 380px;
             z-index: 2;
         }
 
         h1 {
-            font-size: 2.4rem;
+            font-size: 1.9rem;
             margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-top: 10px;
         }
 
         p {
-            font-size: 1.15rem;
-            margin-bottom: 25px;
+            font-size: 1.05rem;
+            margin-bottom: 22px;
+            line-height: 1.5;
         }
 
         .buttons {
             display: flex;
-            gap: 20px;
+            gap: 14px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         button {
             border: none;
-            padding: 12px 28px;
-            font-size: 1.1rem;
+            padding: 14px 26px;
+            font-size: 1rem;
             border-radius: 30px;
             cursor: pointer;
             transition: 0.2s ease;
+            min-width: 120px;
         }
 
         .yes {
@@ -61,7 +76,7 @@
         }
 
         .yes:hover {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         .no {
@@ -71,17 +86,19 @@
         }
 
         .result {
-            font-size: 1.3rem;
-            margin-top: 20px;
+            font-size: 1.15rem;
+            margin-top: 18px;
+            line-height: 1.4;
         }
 
         /* Floating hearts */
         .heart {
             position: absolute;
             bottom: -20px;
-            font-size: 20px;
+            font-size: 18px;
             animation: float 6s linear infinite;
             opacity: 0.8;
+            pointer-events: none;
         }
 
         @keyframes float {
@@ -95,14 +112,30 @@
                 opacity: 0;
             }
         }
+
+        /* Extra small phones */
+        @media (max-width: 360px) {
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            button {
+                padding: 12px 20px;
+                font-size: 0.95rem;
+            }
+        }
     </style>
 </head>
 
 <body>
 
     <div class="card">
-        <h1>Hey Kishore(Thangapataniii)❤️</h1>
-        
+        <h1>Hey Kishore (Thangapataniii) ❤️</h1>
+
         <p>
             Life is sweeter with you in it.<br>
             So I have just one important question…
@@ -112,7 +145,7 @@
 
         <div class="buttons">
             <button class="yes" onclick="sayYes()">Yes 💖</button>
-            <button class="no" onmouseover="moveNo()">No 🙈</button>
+            <button class="no" onclick="moveNo()">No 🙈</button>
         </div>
 
         <div class="result" id="result"></div>
@@ -131,13 +164,13 @@
             btn.style.transform = `translate(${x}px, ${y}px)`;
         }
 
-        // Hearts animation
+        // Floating hearts animation
         setInterval(() => {
             const heart = document.createElement("div");
             heart.className = "heart";
             heart.innerText = "💖";
             heart.style.left = Math.random() * 100 + "vw";
-            heart.style.fontSize = Math.random() * 20 + 15 + "px";
+            heart.style.fontSize = Math.random() * 20 + 14 + "px";
             heart.style.animationDuration = Math.random() * 3 + 4 + "s";
             document.body.appendChild(heart);
 
